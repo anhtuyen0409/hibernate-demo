@@ -1,5 +1,5 @@
 package model;
-// Generated Jul 13, 2023, 3:27:09 PM by Hibernate Tools 3.6.2.Final
+// Generated Jul 14, 2023, 1:00:55 AM by Hibernate Tools 4.3.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +17,11 @@ public class Category implements java.io.Serializable {
 	}
 
 	public Category(String name) {
+		this.name = name;
+	}
+	
+	public Category(int id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 

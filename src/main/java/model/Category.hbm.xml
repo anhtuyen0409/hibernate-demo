@@ -1,19 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Jul 13, 2023, 3:27:09 PM by Hibernate Tools 3.6.2.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="hibernate_demo" dynamic-insert="false" dynamic-update="false" mutable="true" name="model.Category" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="category">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 14, 2023, 1:00:55 AM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="model.Category" table="category" catalog="hibernate_demo" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
-            <column name="ID"/>
-            <generator class="identity"/>
+            <column name="ID" />
+            <generator class="identity" />
         </id>
-        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
-            <column name="NAME" not-null="true"/>
+        <property name="name" type="string">
+            <column name="NAME" not-null="true" />
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="products" optimistic-lock="true" sort="unsorted" table="product">
-            <key on-delete="noaction">
-                <column name="CATE_ID" not-null="true"/>
+        <set name="products" table="product" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CATE_ID" not-null="true" />
             </key>
-            <one-to-many class="model.Product" embed-xml="true" not-found="exception"/>
+            <one-to-many class="model.Product" />
         </set>
     </class>
 </hibernate-mapping>

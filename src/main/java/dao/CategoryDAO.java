@@ -38,7 +38,7 @@ public class CategoryDAO {
 		List<Category> result = new ArrayList<Category>();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		result = session.createQuery(" from Category").list();
+		result = session.createQuery(" from Category").list(); //select * from category
 		session.flush();
 		session.close();
 		return result;
@@ -53,7 +53,7 @@ public class CategoryDAO {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			session.update(category);
+			session.merge(category);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();

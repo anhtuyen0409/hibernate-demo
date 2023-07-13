@@ -1,19 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Jul 13, 2023, 3:27:09 PM by Hibernate Tools 3.6.2.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="hibernate_demo" dynamic-insert="false" dynamic-update="false" mutable="true" name="model.Product" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="product">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 14, 2023, 1:00:55 AM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="model.Product" table="product" catalog="hibernate_demo" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
-            <column name="ID"/>
-            <generator class="identity"/>
+            <column name="ID" />
+            <generator class="identity" />
         </id>
-        <many-to-one class="model.Category" embed-xml="true" fetch="select" insert="true" name="category" not-found="exception" optimistic-lock="true" unique="false" update="true">
-            <column name="CATE_ID" not-null="true"/>
+        <many-to-one name="category" class="model.Category" fetch="select">
+            <column name="CATE_ID" not-null="true" />
         </many-to-one>
-        <property generated="never" lazy="false" name="code" optimistic-lock="true" type="string" unique="false">
-            <column length="100" name="CODE" not-null="true"/>
+        <property name="code" type="string">
+            <column name="CODE" length="100" not-null="true" />
         </property>
-        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
-            <column name="NAME" not-null="true"/>
+        <property name="name" type="string">
+            <column name="NAME" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>
